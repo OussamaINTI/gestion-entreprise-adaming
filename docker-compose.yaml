@@ -1,0 +1,22 @@
+version: "3"
+services:
+  gestion-entreprise-container:
+    image: gestion-entreprise
+    ports:
+      - "6060:8080"
+    networks:
+      - gestion_entreprise_network
+    depends_on:
+      - mysqldb
+  
+  mysqldb:
+    image: mysql:8
+    networks:
+      - gestion_entreprise_network
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=bootdb
+networks:
+  gestion_entreprise_network:      
+      
+       
